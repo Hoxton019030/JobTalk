@@ -4,13 +4,19 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
 @Table(name = "jobTag")
 @Entity(name = "jobTag")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class JobTag {
     @Id
     @Column(name = "id")

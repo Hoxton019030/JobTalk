@@ -13,7 +13,7 @@ public class RedisService {
     private final RedisTemplate<String, Object> redisTemplate;
 
     public boolean setValue(String key, Object value, Integer ttl) {
-        redisTemplate.opsForValue().set(key, value, ttl, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(key, value);
         return true;
     }
 }
