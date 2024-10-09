@@ -11,18 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//@RequestMapping("/message")
+@RequestMapping("/message")
 @RestController
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 @Slf4j
 public class MessageController {
 
-//    private RedisService redisService;
+    private final RedisService redisService;
 
-    public MessageController() {
-        log.info("初始化");
-//        this.redisService = redisService;
-    }
 
     @GetMapping("/test")
     public Response<Message> test() {
@@ -33,7 +29,7 @@ public class MessageController {
         message.setSenderId(0);
         message.setReceiverId(0);
         message.setSendTime(new Date());
-//        redisService.setValue("Test",1,100);
+        redisService.setValue("Test",1,100);
         return Response.success(message);
     }
 }
