@@ -1,12 +1,14 @@
 package org.hoxton.user.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
 @Table(name = "User")
+@Entity(name = "User")
 public class User {
     @Id
     @Column(name = "id")
