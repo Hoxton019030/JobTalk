@@ -1,10 +1,10 @@
-package org.hoxton.common;
+package org.hoxton.redis;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CommonApplicationTests {
+class RedisApplicationTests {
 
     @Test
     void contextLoads() {
