@@ -11,6 +11,10 @@ public class WebSocketMessageHandler extends TextWebSocketHandler {
     // 存儲所有已連接的 WebSocket 會話
     private static final CopyOnWriteArraySet<WebSocketSession> sessions = new CopyOnWriteArraySet<>();
 
+    /**
+     * @param session
+     * @throws Exception
+     */
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         sessions.add(session);  // 新的 WebSocket 連接建立時，將 session 添加到集合中
