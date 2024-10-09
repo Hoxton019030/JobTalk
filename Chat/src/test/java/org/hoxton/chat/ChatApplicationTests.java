@@ -1,10 +1,10 @@
-package org.hoxton.jobtalk;
+package org.hoxton.chat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JobTalkApplicationTests {
+class ChatApplicationTests {
 
     @Test
     void contextLoads() {

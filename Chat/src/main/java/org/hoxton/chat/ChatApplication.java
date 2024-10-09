@@ -1,13 +1,13 @@
-package org.hoxton.jobtalk;
+package org.hoxton.chat;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JobTalkApplication {
+public class ChatApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JobTalkApplication.class, args);
+        SpringApplication.run(ChatApplication.class, args);
     }
 
 }
