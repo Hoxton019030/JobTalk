@@ -1,4 +1,4 @@
-package org.hoxton.redis.redis;
+package org.hoxton.redis.redis.service;
 
 import lombok.RequiredArgsConstructor;
 
@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class RedisService {
     private final RedisTemplate<String, Object> redisTemplate;
 
-    public  boolean setValue(String key, Object value, Integer ttl) {
+    public boolean setValue(String key, Object value, Integer ttl) {
         redisTemplate.opsForValue().set(key, value, ttl, TimeUnit.SECONDS);
         return true;
     }
