@@ -60,6 +60,12 @@
             <version>0.0.1-SNAPSHOT</version>
             <scope>r</scope>
         </dependency>
+        <dependency>
+            <groupId>org.hoxton</groupId>
+            <artifactId>messageQueue</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>r</scope>
+        </dependency>
 
     </dependencies>
 
