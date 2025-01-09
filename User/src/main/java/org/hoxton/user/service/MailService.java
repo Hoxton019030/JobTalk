@@ -2,8 +2,7 @@ package org.hoxton.user.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hoxton.messagequeue.service.MessageQueueProducerService;
-import org.hoxton.redis.redis.service.RedisService;
+import org.hoxton.messagequeue.producer.MessageQueueProducer;
 import org.hoxton.user.request.SendEmailRequest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 public class MailService {
 
     private final JavaMailSender mailSender;
-    private final MessageQueueProducerService messageQueueProducerService;
+    private final MessageQueueProducer messageQueueProducerService;
 //    private final MessageQueueProducerService messageQueueProducerService;
     public String sendEmail(SendEmailRequest sendEmailRequest) {
         SimpleMailMessage message = new SimpleMailMessage();

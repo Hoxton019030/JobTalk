@@ -1,15 +1,14 @@
-package org.hoxton.messagequeue.service;
+package org.hoxton.messagequeue.producer;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
 
-@Service
-public class MessageQueueProducerService {
+@Component
+public class MessageQueueProducer {
 
     private Logger log = Logger.getLogger(this.getClass().getName());
 
