@@ -1,5 +1,6 @@
 package org.hoxton.messagequeue.producer;
 
+import org.hoxton.messagequeue.dto.BaseRabbitMqMessage;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,7 @@ public class MessageQueueProducer {
     @Value("${rabbitmq.queue.name}")
     String queueName;
 
-    public void sendMessage(String message) {
+    public void sendMessage(BaseRabbitMqMessage message) {
         log.info("呼叫到MessageQueueProducer");
         rabbitTemplate.convertAndSend(exchangeName, routeKey, message);
     }
