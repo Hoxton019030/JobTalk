@@ -64,7 +64,6 @@
     </dependencies>
     <modules>
         <module>redis</module>
-        <module>message-queue</module>
     </modules>
 
     <build>
