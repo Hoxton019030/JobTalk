@@ -1,4 +1,4 @@
-package com.example.rabbitmq.configuration;
+package org.hoxton.messagequeue.configure;
 
 import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
@@ -20,7 +20,7 @@ public class RabbitMessageQueueConfiguration {
     String routeKey;
     @Value("${rabbitmq.exchange.name}")
     String exchangeName;
-    @Value("rabbitmq.queue.name")
+    @Value("${rabbitmq.queue.name}")
     String queueName;
 
     @Bean
