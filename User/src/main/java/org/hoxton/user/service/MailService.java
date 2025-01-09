@@ -15,7 +15,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 public class MailService {
 
     private final JavaMailSender mailSender;
-    private final RedisService redisService;
+    private final MessageQueueProducerService messageQueueProducerService;
 //    private final MessageQueueProducerService messageQueueProducerService;
     public String sendEmail(SendEmailRequest sendEmailRequest) {
         SimpleMailMessage message = new SimpleMailMessage();
@@ -24,7 +24,7 @@ public class MailService {
         message.setText(sendEmailRequest.getContent());
         message.setFrom(sendEmailRequest.getFromAddress());
 //        mailSender.send(message);
-//        messageQueueProducerService.sendMessage("安安");
+        messageQueueProducerService.sendMessage("安安");
         return "成功";
     }
 }

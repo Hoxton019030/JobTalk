@@ -13,7 +13,7 @@ public class MessageQueueProducerService {
 
     private Logger log = Logger.getLogger(this.getClass().getName());
 
-//    private  RabbitTemplate rabbitTemplate;
+    private  RabbitTemplate rabbitTemplate;
 
     @Value("${rabbitmq.routekey.name}")
     String routeKey;
@@ -24,7 +24,7 @@ public class MessageQueueProducerService {
 
     public void sendMessage(String message) {
         log.info("呼叫到MessageQueueProducer");
-//        rabbitTemplate.convertAndSend(exchangeName, routeKey, message);
+        rabbitTemplate.convertAndSend(exchangeName, routeKey, message);
     }
 
 }
