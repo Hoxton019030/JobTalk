@@ -24,8 +24,17 @@ public class MailController {
         return ResponseEntity.ok(result);
     }
     @GetMapping("/ping")
-    public ResponseEntity<String> ping(){
+    public ResponseEntity<String> ping() throws InterruptedException {
+        log.info("進來了");
+        Thread.sleep(5000);
+        log.info("出去了");
         return ResponseEntity.ok("ping");
+    }
+
+    @GetMapping("/pong")
+    public ResponseEntity<String> pong() throws InterruptedException {
+        log.info("進來了");
+        return ResponseEntity.ok("pong");
     }
 
 }

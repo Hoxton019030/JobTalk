@@ -5,6 +5,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,15 +14,16 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 @Configuration
+@Slf4j
 public class RabbitMessageQueueConfiguration {
 
     private ConnectionFactory connectionFactory;
-    @Value("${rabbitmq.routekey.name}")
-    String routeKey;
     @Value("${rabbitmq.exchange.name}")
     String exchangeName;
+    @Value("${rabbitmq.routekey.name}")
+    String userRouteKey;
     @Value("${rabbitmq.queue.name}")
-    String queueName;
+    String userQueueName;
 
     @Bean
     public ConnectionFactory connectionFactory() {
@@ -31,6 +33,7 @@ public class RabbitMessageQueueConfiguration {
     @PostConstruct
     public void setupRabbitMQ() throws IOException, TimeoutException {
         // 使用 connectionFactory bean 创建连接
+        log.info("RabbitMQ 初始化中");
         connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("127.0.0.1");
         connectionFactory.setUsername("hoxton");
@@ -41,15 +44,14 @@ public class RabbitMessageQueueConfiguration {
 
         channel.exchangeDeclare(exchangeName, BuiltinExchangeType.DIRECT, true, false, null);
 
-        channel.queueDeclare(queueName, true, false, false, null);
-        channel.queueBind(queueName, exchangeName
-                , routeKey);
+        channel.queueDeclare(userQueueName, true, false, false, null);
+        channel.queueBind(userQueueName, exchangeName, userRouteKey);
 
-//        String message = "Rabbit Mq啟動成功";
-//        channel.basicPublish(exchangeName, queueName, null, message.getBytes());
 
         channel.close();
         connection.close();
+        log.info("RabbitMQ 初始化完成");
+
     }
 
 }
