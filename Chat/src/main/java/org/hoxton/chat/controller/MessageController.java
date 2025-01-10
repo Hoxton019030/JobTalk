@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hoxton.chat.entity.JobTag;
@@ -19,6 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Slf4j
 public class MessageController {
+
+    @PostConstruct
+    public void init() {
+        log.info("初始ㄉˇ化");
+    }
 
     private final RedisService redisService;
 
@@ -40,5 +46,10 @@ public class MessageController {
         List<JobTag> test = redisService.getListValue("Test", JobTag.class);
         log.info("Hoxton log測試test:{}", test);
         return Response.success(message);
+    }
+
+    @GetMapping("ping")
+    public Response<String> ping() {
+        return Response.success("pong");
     }
 }

@@ -1,10 +1,12 @@
 package org.hoxton.user.controller;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hoxton.user.request.SendEmailRequest;
 import org.hoxton.user.service.MailService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,12 +14,22 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RequiredArgsConstructor
 public class MailController {
+
     private final MailService mailService;
+
+    @PostConstruct
+    public void init() {
+        log.info("初始ㄉˇ化");
+    }
 
     @PostMapping("/send")
     public ResponseEntity<String> sendEmail(SendEmailRequest sendEmailRequest){
         String result=mailService.sendEmail(sendEmailRequest);
         return ResponseEntity.ok(result);
+    }
+    @GetMapping("/ping")
+    public ResponseEntity<String> ping(){
+        return ResponseEntity.ok("ping");
     }
 
 }

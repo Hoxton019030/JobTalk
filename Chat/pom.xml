@@ -8,11 +8,13 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>org.hoxton</groupId>
     <artifactId>Chat</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Chat</name>
     <description>Chat</description>
+
     <url/>
     <licenses>
         <license/>
@@ -40,11 +42,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

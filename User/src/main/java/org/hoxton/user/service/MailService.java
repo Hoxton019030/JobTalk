@@ -16,21 +16,15 @@ import org.springframework.mail.javamail.JavaMailSender;
 @Slf4j
 public class MailService {
 
-    private final JavaMailSender mailSender;
     private final MessageQueueService messageQueueService;
-//    private final MessageQueueProducerService messageQueueProducerService;
+
     public String sendEmail(SendEmailRequest sendEmailRequest) {
         SendMailMessage sendMailMessage = new SendMailMessage();
         sendMailMessage.setRabbitMQEvent(RabbitMQEvent.SEND_MAIL);
         sendMailMessage.setTo(sendEmailRequest.getToAddress());
         sendMailMessage.setTitle(sendEmailRequest.getTitle());
         sendMailMessage.setContent(sendEmailRequest.getContent());
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(sendEmailRequest.getToAddress());
-        message.setSubject(sendEmailRequest.getTitle());
-        message.setText(sendEmailRequest.getContent());
-        message.setFrom(sendEmailRequest.getFromAddress());
-//        mailSender.send(message);
+
         messageQueueService.sendMessage(sendMailMessage);
         return "成功";
     }
