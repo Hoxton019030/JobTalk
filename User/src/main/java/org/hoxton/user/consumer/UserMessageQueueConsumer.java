@@ -51,7 +51,6 @@ public class UserMessageQueueConsumer {
                 throw new RuntimeException(e);
             }
         }
-        Thread.sleep(3000);
     }
 
     private void sendEmail(SendEmailRequest sendEmailRequest){
