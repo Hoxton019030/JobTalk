@@ -17,10 +17,6 @@ public class MailController {
 
     private final MailService mailService;
 
-    @PostConstruct
-    public void init() {
-        log.info("初始ㄉˇ化");
-    }
 
     @PostMapping("/send")
     public ResponseEntity<String> sendEmail(SendEmailRequest sendEmailRequest){

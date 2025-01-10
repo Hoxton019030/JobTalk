@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class UserController {
 
-    public UserController() {
-        log.info("初始化");
-    }
 
     @GetMapping("/test")
     public Response<String> test() {

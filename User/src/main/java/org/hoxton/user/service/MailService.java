@@ -24,7 +24,6 @@ public class MailService {
         sendMailMessage.setTo(sendEmailRequest.getToAddress());
         sendMailMessage.setTitle(sendEmailRequest.getTitle());
         sendMailMessage.setContent(sendEmailRequest.getContent());
-
         messageQueueService.sendMessage(sendMailMessage);
         return "成功";
     }

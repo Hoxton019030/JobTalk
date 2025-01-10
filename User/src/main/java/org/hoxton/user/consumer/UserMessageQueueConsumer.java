@@ -9,6 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.hoxton.messagequeue.dto.SendMailMessage;
 import org.hoxton.messagequeue.enumerate.RabbitMQEvent;
 import org.hoxton.messagequeue.service.MessageQueueService;
+import org.hoxton.user.request.SendEmailRequest;
+import org.hoxton.user.service.MailService;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.core.Message;
@@ -19,11 +23,12 @@ import org.springframework.amqp.core.Message;
 public class UserMessageQueueConsumer {
     //    @
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final MessageQueueService messageQueueService;
+    private final MailService mailService;
+    private final JavaMailSender javaMailSender;
 
 
     @RabbitListener(queues = "${rabbitmq.queue.name}")
-    public void process(Message  message) {
+    public void process(Message  message) throws InterruptedException {
         byte[] body = message.getBody();
         String jsonString = new String(body);
         JSONObject jsonObject = JSON.parseObject(jsonString);
@@ -33,13 +38,28 @@ public class UserMessageQueueConsumer {
             SendMailMessage sendMailMessage = null;
             try {
                 sendMailMessage = objectMapper.readValue(jsonString, SendMailMessage.class);
+                String title = sendMailMessage.getTitle();
+                String content = sendMailMessage.getContent();
+                String to = sendMailMessage.getTo();
+                SendEmailRequest sendEmailRequest = new SendEmailRequest();
+                sendEmailRequest.setToAddress(to);
+                sendEmailRequest.setTitle(title);
+                sendEmailRequest.setContent(content);
+                sendEmail(sendEmailRequest);
+                log.info("信件發送成功 {}",sendEmailRequest);
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);
             }
-            log.info("123{}", sendMailMessage);
-
         }
-        log.info("呼叫到Consumer");
-        log.info("接收到的消息" + new String(body));
+        Thread.sleep(3000);
+    }
+
+    private void sendEmail(SendEmailRequest sendEmailRequest){
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setFrom(sendEmailRequest.getFromAddress());
+        simpleMailMessage.setTo(sendEmailRequest.getToAddress());
+        simpleMailMessage.setSubject(sendEmailRequest.getTitle());
+        simpleMailMessage.setText(sendEmailRequest.getContent());
+        javaMailSender.send(simpleMailMessage);
     }
 }

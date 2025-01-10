@@ -21,10 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class MessageController {
 
-    @PostConstruct
-    public void init() {
-        log.info("初始ㄉˇ化");
-    }
 
     private final RedisService redisService;
 
