@@ -2,14 +2,11 @@ package org.hoxton.user.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hoxton.messagequeue.dto.SendMailMessage;
-import org.hoxton.messagequeue.enumerate.RabbitMQEvent;
-import org.hoxton.messagequeue.producer.MessageQueueProducer;
-import org.hoxton.messagequeue.service.MessageQueueService;
+import org.hoxton.common.messagequeue.dto.SendMailMessage;
+import org.hoxton.common.messagequeue.enumerate.RabbitMQEvent;
+import org.hoxton.common.messagequeue.service.MessageQueueService;
 import org.hoxton.user.request.SendEmailRequest;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
-import org.springframework.mail.javamail.JavaMailSender;
 
 @Service
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package org.hoxton.messagequeue.configure;
+package org.hoxton.common.messagequeue.configure;
 
 import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
@@ -21,9 +21,9 @@ public class RabbitMessageQueueConfiguration {
     @Value("${rabbitmq.exchange.name}")
     String exchangeName;
     @Value("${rabbitmq.routekey.name}")
-    String userRouteKey;
+    String routeKey;
     @Value("${rabbitmq.queue.name}")
-    String userQueueName;
+    String queueName;
 
     @Bean
     public ConnectionFactory connectionFactory() {
@@ -44,8 +44,8 @@ public class RabbitMessageQueueConfiguration {
 
         channel.exchangeDeclare(exchangeName, BuiltinExchangeType.DIRECT, true, false, null);
 
-        channel.queueDeclare(userQueueName, true, false, false, null);
-        channel.queueBind(userQueueName, exchangeName, userRouteKey);
+        channel.queueDeclare(queueName, true, false, false, null);
+        channel.queueBind(queueName, exchangeName, routeKey);
 
 
         channel.close();

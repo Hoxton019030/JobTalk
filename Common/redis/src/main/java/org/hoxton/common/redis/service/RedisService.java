@@ -1,4 +1,4 @@
-package org.hoxton.redis.redis.service;
+package org.hoxton.common.redis.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;

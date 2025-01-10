@@ -1,7 +1,7 @@
-package org.hoxton.messagequeue.dto;
+package org.hoxton.common.messagequeue.dto;
 
 import lombok.Data;
-import org.hoxton.messagequeue.enumerate.RabbitMQEvent;
+import org.hoxton.common.messagequeue.enumerate.RabbitMQEvent;
 
 @Data
 public class SendMailMessage extends BaseRabbitMqMessage {

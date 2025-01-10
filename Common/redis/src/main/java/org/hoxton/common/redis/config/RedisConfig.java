@@ -1,4 +1,4 @@
-package org.hoxton.redis.redis.config;
+package org.hoxton.common.redis.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;

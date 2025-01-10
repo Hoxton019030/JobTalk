@@ -1,13 +1,12 @@
-package org.hoxton.messagequeue.producer;
+package org.hoxton.common.messagequeue.producer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.hoxton.messagequeue.dto.BaseRabbitMqMessage;
+import org.hoxton.common.messagequeue.dto.BaseRabbitMqMessage;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
 

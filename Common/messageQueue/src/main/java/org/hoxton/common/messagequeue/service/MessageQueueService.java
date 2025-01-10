@@ -1,9 +1,8 @@
-package org.hoxton.messagequeue.service;
+package org.hoxton.common.messagequeue.service;
 
 import lombok.RequiredArgsConstructor;
-import org.hoxton.messagequeue.dto.BaseRabbitMqMessage;
-import org.hoxton.messagequeue.producer.MessageQueueProducer;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hoxton.common.messagequeue.dto.BaseRabbitMqMessage;
+import org.hoxton.common.messagequeue.producer.MessageQueueProducer;
 import org.springframework.stereotype.Service;
 
 @Service
