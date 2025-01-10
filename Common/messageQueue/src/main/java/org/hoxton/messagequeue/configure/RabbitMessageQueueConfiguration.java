@@ -45,8 +45,8 @@ public class RabbitMessageQueueConfiguration {
         channel.queueBind(queueName, exchangeName
                 , routeKey);
 
-        String message = "Rabbit Mq啟動成功";
-        channel.basicPublish(exchangeName, queueName, null, message.getBytes());
+//        String message = "Rabbit Mq啟動成功";
+//        channel.basicPublish(exchangeName, queueName, null, message.getBytes());
 
         channel.close();
         connection.close();
